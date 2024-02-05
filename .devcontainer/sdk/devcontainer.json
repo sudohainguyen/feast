@@ -1,0 +1,23 @@
+{
+  "name": "feast-devcontainer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "sdk",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest"
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install default-libmysqlclient-dev pkg-config -y &&conda install python=3.10 -y && pip install -e '.[dev]' && make compile-protos-python",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "ms-python.vscode-pylance",
+        "ms-python.python"
+      ]
+    }
+  }
+}
