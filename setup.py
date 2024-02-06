@@ -54,7 +54,7 @@ REQUIRED = [
     "jsonschema",
     "mmh3",
     "numpy>=1.22,<1.25",
-    "pandas>=1.4.3,<2",
+    "pandas>=1.4.3,<3,!=2.1.*",
     # For some reason pandavro higher than 1.5.* only support pandas less than 1.3.
     "pandavro~=1.5.0",
     # Higher than 4.23.4 seems to cause a seg fault
@@ -155,7 +155,7 @@ CI_REQUIRED = (
         "grpcio-testing>=1.56.2,<2",
         "minio==7.1.0",
         "mock==2.0.0",
-        "moto",
+        "moto<5",
         "mypy>=0.981,<0.990",
         "avro==1.10.0",
         "fsspec<2023.10.0",

@@ -98,8 +98,11 @@ def test_feature_service_logging(environment, universal_data_sources, pass_as_pa
 
     persisted_logs = persisted_logs[expected_columns]
     logs_df = logs_df[expected_columns]
-    pd.testing.assert_frame_equal(
-        logs_df.sort_values(REQUEST_ID_FIELD).reset_index(drop=True),
-        persisted_logs.sort_values(REQUEST_ID_FIELD).reset_index(drop=True),
-        check_dtype=False,
-    )
+    assert persisted_logs.columns.equals(logs_df.columns)
+    for col in persisted_logs.columns:
+        assert persisted_logs[col].to_list() == logs_df[col].to_list()
+    # pd.testing.assert_frame_equal(
+    #     logs_df.sort_values(REQUEST_ID_FIELD).reset_index(drop=True),
+    #     persisted_logs.sort_values(REQUEST_ID_FIELD).reset_index(drop=True),
+    #     check_dtype=False,
+    # )

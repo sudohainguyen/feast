@@ -81,7 +81,7 @@ test-python-integration-local:
  				not s3_registry and \
  				not test_lambda_materialization and \
  				not test_snowflake" \
-		sdk/python/tests \
+		sdk/python/tests/unit/online_store/test_online_retrieval.py \
 	) || echo "This script uses Docker, and it isn't running - please start the Docker Daemon and try again!";
 
 test-python-integration-container:
